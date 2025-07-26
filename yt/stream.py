@@ -35,9 +35,12 @@ def get_stream_url_with_proxy_rotation(video_id: str, proxy_manager: ProxyManage
         ydl_opts = {
             'quiet': True,
             'format': 'bestaudio/best',
+            'skip_download': True,
             'noplaylist': True,
             'proxy': proxy,
-            'retries': 0, 
+            'retries': 0,  
+            'socket_timeout': 5,
+            'nocheckcertificate': True,
             'cookiefile': 'cookies.txt'
         }
 
@@ -68,7 +71,10 @@ def get_stream_url_with_proxy_rotation(video_id: str, proxy_manager: ProxyManage
            'quiet': True,
             'format': 'bestaudio/best',
             'noplaylist': True,
-            'retries': 0,  
+            'skip_download': True,
+            'retries': 0,  # ⛔ Disable retry on fallback too
+            'socket_timeout': 5,
+            'nocheckcertificate': True,
             'cookiefile': 'cookies.txt'
         }
 
